@@ -1,0 +1,25 @@
+// react: comment
+.comment
+  h2.commentAuthor= props.author
+  span!= rawMarkup
+
+// react: list
+.commentList
+  - props.data.forEach(function(comment, index){
+      Comment(author=comment.author, text=comment.text key=index)
+  - })
+
+// react: form
+form.commentForm(onSubmit=view.handleSubmit)
+  input(type="text", placeholder="Your Name", ref="author")
+  br
+  textarea(type="text", placeholder="Say something...", ref="text")
+  br
+  label supports markdown
+  input(type="submit", value="Post")
+
+// react: box
+.commentBox
+  h1 Comments
+  CommentList(data=state.data)
+  CommentForm(onCommentSubmit=view.handleCommentSubmit)

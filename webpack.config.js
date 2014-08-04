@@ -13,13 +13,13 @@ module.exports = {
     },
     module: {
       loaders: [
-        { test: /\.jade$/, loader: "react-jade-loader" }
+        { test: /\.jade$/, loader: "react-jade-loader?split=true" }
       ]
     },
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('vendor-bundle.js', 'common.js'),
-      new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.OccurenceOrderPlugin(true),
-      new webpack.optimize.UglifyJsPlugin()
+      // new webpack.optimize.DedupePlugin(),
+      // new webpack.optimize.OccurenceOrderPlugin(true),
+      // new webpack.optimize.UglifyJsPlugin()
     ]
 }
