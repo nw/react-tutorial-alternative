@@ -17,7 +17,7 @@ __All__ client code is located in `client/` folder. Start the server, poke aroun
 
 ## Overview
 
-This version is an experiment with [react-jade](https://github.com/ForbesLindesay/react-jade). Currently it uses an experimental branch that allows for auto tag expansion into `react` components. It solves the issue of expanding tags that match user created react classes along with type detection on tags. If tag is not found in `react.DOM` namespace it will default to a div instead of throwing an error at runtime.
+This version is an experiment with [react-jade](https://github.com/ForbesLindesay/react-jade). Currently it uses an experimental branch that allows for auto tag expansion into `react` components. It solves the issue of expanding tags that match user created react classes much like the convenience of jsx. If a tag is not found in `react.DOM` namespace it will default to a div instead of throwing an error at runtime.
 
 A simple wrapper around `react.createClass` is used, see `lib/react-component`. The main purpose is to handle dependency injection into the views/templates. When you pass a `render` function it will be bound to the react class instance and passed a view. This view is a template function compiled by `react-jade`. 
 
@@ -41,17 +41,20 @@ component.create('CommentList', views.list);
 
 ```
 
-You can also omit the render function if you pass tpl in options.
+You can also omit the render function if you pass tpl in options as well.
 
 ## Views
 
 `jade-react` function signature has been modified to allow `locals` and `components` to be passed. The wrapper automatically injects the following:
 
+All components created with `component`
+
 * __view__: instance of the react class. Ideally this would be `this`. Because of the code generation it makes it extremely difficult to manage with the closures created in the generated code.
 * __props__: shortcut to view.props
 * __state__: shortcut to view.state
+* __components__: all custom created components are injected automatically
 
-Along with any other properties you pass in.
+Along with any other properties you pass in. Similar to jsx autobinding is implemented via `react-jade`.
 
 Example template:
 
@@ -72,7 +75,14 @@ Utilizing `webpack` and `react-jade-loader` you can define multiple react views 
 
 I really like the concept of jsx but I hate html and more importantly inlined in my js. This approach while still not as elegant starts to bridge the gap in building your view logic with the same ease.
 
-Jade has a lot of helpers that make writing js inside cleaner and easier (my opinion). `react-jade` just introduced mixins as well. I believe this will offer a powerful abstraction layer for building even more complex UIs with ease.
+Jade has a lot of helpers that make writing js inside cleaner and easier (my opinion). 
+
+* jade already has powerful className merging functionality, no need for a plugin.
+* special helpers like `each` loops
+* `react-jade` just introduced mixins as well. 
+
+
+I believe this will offer a powerful abstraction layer for building even more complex UIs with ease.
 
 
 ## License
