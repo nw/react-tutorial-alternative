@@ -3,10 +3,13 @@ var webpack = require('webpack')
 
 module.exports = {
     context: __dirname,
-    entry: './client/comments',
+    entry: {
+      comments: './client/comments',
+      vendor: ['react', 'jquery', 'marked']
+    },
     output: {
         path: path.join(__dirname, "public/js")
-      , filename: "comments.js"
+      , filename: "[name]-bundle.js"
     },
     module: {
       loaders: [
@@ -14,7 +17,9 @@ module.exports = {
       ]
     },
     plugins: [
-    //new webpack.IgnorePlugin(/react/)
+      new webpack.optimize.CommonsChunkPlugin('vendor-bundle.js', 'common.js'),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(true),
       new webpack.optimize.UglifyJsPlugin()
     ]
 }
