@@ -1,3 +1,4 @@
+
 var component = require('../lib/react-component');
 
 require('./components/comments');

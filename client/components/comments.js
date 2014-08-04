@@ -1,5 +1,6 @@
 var component = require('../../lib/react-component');
-var converter = new Showdown.converter();
+var marked = require('marked');
+var $ = require('jquery');
 
 // Hack: I want the react-component to handle.
 // webpack wasn't handling delayed/dynamic dependencies well. 
@@ -12,7 +13,7 @@ var tpl = ['box', 'comment', 'form', 'list'].reduce(function(obj, name){
 component.create('Comment', {
   tpl: tpl.comment,
   render: function(view) {
-    var rawMarkup = converter.makeHtml(this.props.text);
+    var rawMarkup = marked(this.props.text);
     return view({rawMarkup: rawMarkup});
   }
 });
