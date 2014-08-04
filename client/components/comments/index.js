@@ -13,12 +13,7 @@ component.create('Comment', {
 });
 
 /* List of Comments */
-component.create('CommentList', {
-  tpl: views.list,
-  render: function(view) {
-    return view();
-  }
-});
+component.create('CommentList', views.list);
 
 /* Comment Form (add new comment) - requires parent to pass onCommentSubmit fn*/
 component.create('CommentForm', {
