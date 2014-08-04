@@ -18,8 +18,8 @@ module.exports = {
     },
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('vendor-bundle.js', 'common.js'),
-      // new webpack.optimize.DedupePlugin(),
-      // new webpack.optimize.OccurenceOrderPlugin(true),
-      // new webpack.optimize.UglifyJsPlugin()
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(true),
+      new webpack.optimize.UglifyJsPlugin()
     ]
 }
