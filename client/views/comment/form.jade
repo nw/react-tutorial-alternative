@@ -1,0 +1,7 @@
+form.commentForm(onSubmit=view.handleSubmit)
+  input(type="text", placeholder="Your Name", ref="author")
+  br
+  textarea(type="text", rows=10, placeholder="Say something...", ref="text")
+  br
+  label supports markdown
+  input(type="submit", value="Post")
