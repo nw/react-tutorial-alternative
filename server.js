@@ -3,12 +3,11 @@ var express = require('express')
   , webpackDevMiddleware = require('webpack-dev-middleware')
   , bodyParser = require('body-parser')
   , app = express()
-  , compile_config = require('./webpack.config');
+  , compile_config = require('./webpack.config')
+  , compiler = webpack(compile_config);
 
 var comments = [{author: 'Pete Hunt', text: 'Hey there!'}];
 
-compile_config.plugins = [];
-var compiler = webpack(compile_config);
 app.use(webpackDevMiddleware(compiler, {
     quiet: false,
     noInfo: false,
@@ -17,7 +16,6 @@ app.use(webpackDevMiddleware(compiler, {
     publicPath: "/js/",
     stats: { colors: true }
 }));
-
 
 app.use('/', express.static(__dirname + '/public'));
 app.use(bodyParser.json());

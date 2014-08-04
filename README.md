@@ -1,9 +1,9 @@
 
-## React comment box example
+# React comment box example
 
 This is an alternative example to the offical [tutorial](https://github.com/reactjs/react-tutorial). The article about this tutorial is located in [facebook react docs](http://facebook.github.io/react/docs/tutorial.html).
 
-### Setup
+## Setup
 
 ```
    git clone https://github.com/nw/react-tutorial-alternative.git
@@ -11,11 +11,11 @@ This is an alternative example to the offical [tutorial](https://github.com/reac
    npm install
    npm start
 ```
-webpack middleware is installed into the server. It will auto compile any changes made to the client application files. Compression is turned off to enable faster build times.
+webpack middleware is installed into the server. It will auto compile any changes made to the client application files.
 
 __All__ client code is located in `client/` folder. Start the server, poke around and watch your changes on localhost:3000.
 
-### Overview
+## Overview
 
 
 This version is an experiment with [react-jade](https://github.com/ForbesLindesay/react-jade). Currently it uses an experimental branch that allows for auto tag expansion into `react` components. It solves the issue of expanding tags that match react classes already created. It also does type detection and if not found in `react` namespace it will default to a div instead of throwing an error at runtime.
@@ -34,7 +34,7 @@ component.create('Comment', {
 
 ```
 
-### Views
+## Views
 
 `jade-react` function signature has been modified to allow `locals` and `components` to be passed. The wrapper automatically injects the following:
 
@@ -54,14 +54,14 @@ Example template:
 ```
 Provided CommentList and CommentForm have already been registered. These components will be rendered properly. Giving you similar power and freedom of `jsx`.
 
-### Why?
+## Why?
 
 I really like the concept of jsx but I hate html and more importantly inlined in my js. This approach while still not as elegant starts to bridge the gap in building your view logic with the same ease.
 
 Jade has a lot of helpers that make writing js inside cleaner and easier (my opinion). `react-jade` just introduced mixins as well. I believe this will offer a powerful abstraction layer for building even more complex UIs with ease.
 
 
-### License
+## License
 
 The MIT License (MIT)
 
