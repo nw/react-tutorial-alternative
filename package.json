@@ -1,0 +1,38 @@
+{
+  "name": "react-tutorial-alternative",
+  "version": "0.0.1",
+  "description": "Code from the React tutorial using react-jade",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
+  },
+  "devDependencies": {
+    "webpack": "^1.3.x",
+    "react": "^0.11.1",
+    "extend": "^1.3.0",
+    "webpack-dev-middleware": "^1.0.10",
+    "react-jade": "https://github.com/nw/react-jade/archive/0.1.2-alpha.tar.gz",
+    "react-jade-loader": "0.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nw/react-tutorial-alternative.git"
+  },
+  "keywords": [
+    "react",
+    "tutorial",
+    "comment",
+    "example"
+  ],
+  "author": "nw <nw@nwhite.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nw/react-tutorial-alternative/issues"
+  },
+  "homepage": "https://github.com/nw/react-tutorial-alternative"
+}
