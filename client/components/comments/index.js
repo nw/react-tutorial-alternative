@@ -1,17 +1,11 @@
-var component = require('../../lib/react-component');
-var marked = require('marked');
-var $ = require('jquery');
-
-// Hack: I want the react-component to handle.
-// webpack wasn't handling delayed/dynamic dependencies well. 
-var tpl = ['box', 'comment', 'form', 'list'].reduce(function(obj, name){
-  obj[name] = require('../views/comment/'+name+'.jade');
-  return obj;
-},{});
+var component = require('../../../lib/react-component')
+  , marked = require('marked')
+  , $ = require('jquery')
+  , views = require('./view.jade');
 
 /* Individual Comment */
 component.create('Comment', {
-  tpl: tpl.comment,
+  tpl: views.comment,
   render: function(view) {
     var rawMarkup = marked(this.props.text);
     return view({rawMarkup: rawMarkup});
@@ -20,7 +14,7 @@ component.create('Comment', {
 
 /* List of Comments */
 component.create('CommentList', {
-  tpl: tpl.list,
+  tpl: views.list,
   render: function(view) {
     return view();
   }
@@ -28,7 +22,7 @@ component.create('CommentList', {
 
 /* Comment Form (add new comment) - requires parent to pass onCommentSubmit fn*/
 component.create('CommentForm', {
-  tpl: tpl.form,
+  tpl: views.form,
   handleSubmit: function() {
     var author = this.refs.author.getDOMNode().value.trim();
     var text = this.refs.text.getDOMNode().value.trim();
@@ -40,12 +34,11 @@ component.create('CommentForm', {
   render: function(view) {
     return view();
   }
-
 });
 
 /* Comment Box - polling and update handling */
 component.create('CommentBox', {
-  tpl: tpl.box,
+  tpl: views.box,
   loadCommentsFromServer: function() {
     $.ajax({
       url: this.props.url,
