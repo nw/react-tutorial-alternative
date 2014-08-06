@@ -1,7 +1,7 @@
 var component = require('../../../lib/react-component')
   , marked = require('marked')
   , $ = require('jquery')
-  , views = require('./view.jade');
+  , views = require('./view');
 
 /* Individual Comment */
 component.create('Comment', {
