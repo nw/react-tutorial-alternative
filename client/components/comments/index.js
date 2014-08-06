@@ -7,17 +7,16 @@ var component = require('../../../lib/react-component')
 component.create('Comment', {
   tpl: views.comment,
   render: function(view) {
-    var rawMarkup = marked(this.props.text);
-    return view({rawMarkup: rawMarkup});
+    return view({rawMarkup: marked(this.props.text)});
   }
 });
 
 /* List of Comments */
-component.create('CommentList', views.list);
+component.create('CommentList', views.list); 
 
 /* Comment Form (add new comment) - requires parent to pass onCommentSubmit fn*/
 component.create('CommentForm', {
-  tpl: views.form,
+  tpl: views.form, // defaults to render fn
   handleSubmit: function() {
     var author = this.refs.author.getDOMNode().value.trim();
     var text = this.refs.text.getDOMNode().value.trim();
