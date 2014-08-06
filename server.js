@@ -3,10 +3,19 @@ var express = require('express')
   , webpackDevMiddleware = require('webpack-dev-middleware')
   , bodyParser = require('body-parser')
   , app = express()
+  , component = require('./lib/react-component')
   , compile_config = require('./webpack.config')
   , compiler = webpack(compile_config);
 
+// register components
+// require('./client/components/comments');
+
 var comments = [{author: 'Pete Hunt', text: 'Hey there!'}];
+
+app
+  .set('views', __dirname + '/public')
+  .set('view options', {layout: false})
+  .set('view engine', 'jade');
 
 app.use(webpackDevMiddleware(compiler, {
     quiet: false,
@@ -16,6 +25,19 @@ app.use(webpackDevMiddleware(compiler, {
     publicPath: "/js/",
     stats: { colors: true }
 }));
+
+app.get('/', function(req, res){
+  
+  // var component.renderString('CommentBox', {
+  //     data: comments
+  //   , url: "comments.json"
+  //   , pollInterval: 2000})
+  // });
+  
+  res.render("index", {
+    content: ""
+  })
+});
 
 app.use('/', express.static(__dirname + '/public'));
 app.use(bodyParser.json());
