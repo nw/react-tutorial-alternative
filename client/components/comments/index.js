@@ -25,15 +25,12 @@ component.create('CommentForm', {
     this.refs.author.getDOMNode().value = '';
     this.refs.text.getDOMNode().value = '';
     return false;
-  },
-  render: function(view) {
-    return view();
   }
 });
 
 /* Comment Box - polling and update handling */
 component.create('CommentBox', {
-  tpl: views.box,
+  tpl: views.box, // defaults to render fn
   loadCommentsFromServer: function() {
     $.ajax({
       url: this.props.url,
@@ -68,13 +65,10 @@ component.create('CommentBox', {
     });
   },
   getInitialState: function() {
-    return {data: []};
+    return {data: (this.props.data) ? this.props.data : []};
   },
   componentDidMount: function() {
     this.loadCommentsFromServer();
     setInterval(this.loadCommentsFromServer, this.props.pollInterval);
-  },
-  render: function(view) {
-    return view();
   }
 });
