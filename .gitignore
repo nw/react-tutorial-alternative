@@ -1,2 +1,3 @@
 node_modules
 public/js
+client/components/comments/view.js
