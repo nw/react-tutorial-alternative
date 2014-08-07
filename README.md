@@ -1,7 +1,9 @@
 
 # React comment box example
 
-This is an alternative example to the offical [tutorial](https://github.com/reactjs/react-tutorial). The article about this tutorial is located in [facebook react docs](http://facebook.github.io/react/docs/tutorial.html).
+This is an alternative example to the offical [tutorial](https://github.com/reactjs/react-tutorial). The article about this tutorial is located in [facebook react docs](http://facebook.github.io/react/docs/tutorial.html). 
+
+This example also includes server side component rendering. 
 
 ## Setup
 
@@ -13,7 +15,7 @@ This is an alternative example to the offical [tutorial](https://github.com/reac
 ```
 webpack middleware is installed into the server. It will auto compile any changes made to the client application files.
 
-__All__ client code is located in `client/` folder. Start the server, poke around and watch your changes on localhost:3000.
+__All__ client code is located in `client/` folder. Start the server, poke around and watch your changes on localhost:3000. (The rendered server response needs a server restart to refresh changes). 
 
 ## Overview
 
